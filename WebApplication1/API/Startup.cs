@@ -12,6 +12,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApplication1.Comunicacao_Entidades;
+using WebApplication1.Repositories;
 
 namespace WebApplication1
 {
@@ -28,6 +30,7 @@ namespace WebApplication1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<SUCOS_VENDASContext>(x => x.UseSqlite("Data source=sucos_vendas.db")); // Configuração de conexção com o banco de dados.
+            services.AddScoped<InotasFiscaiRepositorie, NotasFiscaiRepositorie>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

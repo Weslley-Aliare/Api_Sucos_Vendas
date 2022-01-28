@@ -22,9 +22,9 @@ namespace WebApplication1.Comunicacao_Entidades
             return notasFiscai;
         }
 
-        public async Task Delete(int id)
+        public async Task Delete(int Numero)
         {
-            var notaFiscalToDelete = await _context.NotasFiscais.FindAsync(id);
+            var notaFiscalToDelete = await _context.NotasFiscais.FindAsync(Numero);
             _context.NotasFiscais.Remove(notaFiscalToDelete);
             await _context.SaveChangesAsync();
         }
@@ -34,14 +34,15 @@ namespace WebApplication1.Comunicacao_Entidades
            return await _context.NotasFiscais.ToListAsync();
         }
 
-        public Task<NotasFiscai> Get(int id)
+        public async Task<NotasFiscai> Get(int Numero)
         {
-            throw new System.NotImplementedException();
+           return await _context.NotasFiscais.FindAsync(Numero);
         }
 
-        public Task<NotasFiscai> Update(NotasFiscai notasFiscai)
+        public async Task Update(NotasFiscai notasFiscai)
         {
-            throw new System.NotImplementedException();
+            _context.Entry(notasFiscai).State = EntityState.Modified;
+            await _context.SaveChangesAsync();  
         }
     }
 }

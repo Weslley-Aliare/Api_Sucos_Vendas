@@ -7,12 +7,12 @@ namespace WebApplication1.Repositories
     {
         Task<IEnumerable<NotasFiscai>> Get();
 
-        Task<NotasFiscai> Get(int id);
+        Task<NotasFiscai> Get(int Numero);
 
         Task<NotasFiscai> Create(NotasFiscai notasFiscai);
 
-        Task<NotasFiscai> Update(NotasFiscai notasFiscai);
+        Task Update(NotasFiscai notasFiscai);
 
-        Task Delete(int id);
+        Task Delete(int Numero);
     }
 }
