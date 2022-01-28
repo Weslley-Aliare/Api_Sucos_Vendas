@@ -1,15 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using WebApplication1.Actions;
 using WebApplication1.Repositories;
 
 namespace WebApplication1.Comunicacao_Entidades
 {
-    public class NotasFiscaiRepositorie : InotasFiscaiRepositorie
+    public class NotasFiscaiActions : IActionNotasFiscais
     {
         public readonly SUCOS_VENDASContext _context; // chamando (apenas como leitura) a conexão com a classe "SUCOS_VENDASContext" e o nomeando para _context
 
-        public NotasFiscaiRepositorie(SUCOS_VENDASContext context) // Construtor da classe, passando SUCOS_VENDASContext como parametro e o nomeando para context.
+        public NotasFiscaiActions(SUCOS_VENDASContext context) // Construtor da classe, passando SUCOS_VENDASContext como parametro e o nomeando para context.
         {
             _context = context;
         }

@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebApplication1.Repositories;
@@ -11,9 +9,9 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class NotasFiscaiController : ControllerBase
     {
-        private readonly InotasFiscaiRepositorie _notasFiscaiRepositorie;
+        private readonly IActionNotasFiscais _notasFiscaiRepositorie;
 
-        public NotasFiscaiController(InotasFiscaiRepositorie notasFiscaiRepositorie)
+        public NotasFiscaiController(IActionNotasFiscais notasFiscaiRepositorie)
         {
             _notasFiscaiRepositorie = notasFiscaiRepositorie;
         }

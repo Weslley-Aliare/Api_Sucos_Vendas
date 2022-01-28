@@ -29,7 +29,7 @@ namespace WebApplication1
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Password=@Nicolas2018;Persist Security Info=True;User ID=sa;Initial Catalog=SUCOS_VENDAS;Data Source=NTB-6NHXQK3");
+                optionsBuilder.UseSqlServer(@"Password=@Nicolas2018;Persist Security Info=True;User ID=sa;Initial Catalog=SUCOS_VENDAS;Data Source=NTB-6NHXQK3");
             }
         }
 

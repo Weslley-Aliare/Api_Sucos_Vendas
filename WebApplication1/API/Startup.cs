@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApplication1.Actions;
 using WebApplication1.Comunicacao_Entidades;
 using WebApplication1.Repositories;
 
@@ -26,11 +27,12 @@ namespace WebApplication1
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        // This method gets called by the runtime. Use this method to add services to the container.  ("Data source=SUCOS_VENDAS.db")
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<SUCOS_VENDASContext>(x => x.UseSqlite("Data source=sucos_vendas.db")); // Configuração de conexção com o banco de dados.
-            services.AddScoped<InotasFiscaiRepositorie, NotasFiscaiRepositorie>();
+            services.AddDbContext<SUCOS_VENDASContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))); // Configuração de conexção com o banco de dados.
+            services.AddScoped<IActionNotasFiscais, NotasFiscaiActions>();
+            services.AddScoped<IActionVendedores, VendedorActions>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -43,10 +45,10 @@ namespace WebApplication1
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApplication1 v1"));
+                app.UseDeveloperExceptionPage(); 
             }
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApplication1 v1"));
 
             app.UseHttpsRedirection();
 
